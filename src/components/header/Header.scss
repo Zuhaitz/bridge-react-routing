@@ -4,12 +4,12 @@
   align-items: center;
   padding: 0 20px;
 
-  color: $primary-text-color;
   background-color: $primary-color;
 
   &__name {
     font-size: 32px;
     font-weight: bold;
+    color: $secondary-text-color;
   }
 
   &__links {
@@ -21,6 +21,7 @@
     font-size: 18px;
     font-weight: bold;
     padding: 20px;
+    color: $secondary-text-color;
 
     &--active {
       color: $primary-color;
