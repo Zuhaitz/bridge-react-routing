@@ -2,11 +2,26 @@ import { useState } from "react";
 import "./Contact.scss";
 
 const Contact = () => {
+  if (!localStorage.getItem("contacts")) {
+    console.log("enter");
+    localStorage.setItem("contacts", JSON.stringify([]));
+  }
+
   const initialValue = { name: "", email: "", phone: "" };
   const [formData, setFormData] = useState(initialValue);
+  const [message, setMessage] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (formData.name.length < 5) {
+      return setMessage("Name must be 5 or more characters longer");
+    }
+
+    const contacts = JSON.parse(localStorage.getItem("contacts"));
+    contacts.push(formData);
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+
     clearState();
   };
 
@@ -17,11 +32,13 @@ const Contact = () => {
 
   const clearState = () => {
     setFormData({ ...initialValue });
+    setMessage("");
   };
 
   return (
     <div className="contact">
       <h1 className="contact__title">Contact Info</h1>
+      <p className="contact__error">{message}</p>
       <form onSubmit={handleSubmit} className="contact__form">
         <div className="contact__field">
           <label htmlFor="name">Name: </label>
