@@ -6,13 +6,15 @@ import Contact from "./pages/contact/Contact";
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
+      <section className="layout">
+        <Header />
+        <main className="main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+      </section>
     </BrowserRouter>
   );
 }
