@@ -3,6 +3,7 @@ import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
 import Reserve from "./pages/reserve/Reserve";
 import Contact from "./pages/contact/Contact";
+import About from "./pages/about/About";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/reserve" element={<Reserve />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </main>
       </section>
