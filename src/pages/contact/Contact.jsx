@@ -1,15 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Contact.scss";
 
 const Contact = () => {
-  if (!localStorage.getItem("contacts")) {
-    console.log("enter");
+  if (!localStorage.getItem("contacts"))
     localStorage.setItem("contacts", JSON.stringify([]));
-  }
 
   const initialValue = { name: "", email: "", phone: "" };
   const [formData, setFormData] = useState(initialValue);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -23,6 +23,8 @@ const Contact = () => {
     localStorage.setItem("contacts", JSON.stringify(contacts));
 
     clearState();
+
+    navigate("/");
   };
 
   const handleChange = (event) => {
